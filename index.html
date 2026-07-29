@@ -3,18 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/@acab/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
     <header class="header">
         <div class="header__container">
-            <div class="header__content">
-                <h1 class="header__title">
-                    <img src="./images/logo.svg" alt="CareSend">
-                </h1>
-            </div>
+            <h1 class="header__title">
+                <img src="./images/logo.svg" alt="CareSend">
+            </h1>
+            <nav class="header__nav">
+                <ul class="header__menu">
+                    <li class="header__item">
+                        <a href="">CareSendについて</a>
+                    </li>
+                    <li class="header__item">
+                        <a href="">CareSendの特徴</a>
+                    </li>
+                    <li class="header__item">
+                        <a href="">導入事例</a>
+                    </li>
+                    <li class="header__item">
+                        <a href="">料金</a>
+                    </li>
+                    <li class="header__item">
+                        <a href="">よくある質問</a>
+                    </li>
+                </ul>
+            </nav>
+            <a class="header__cta" href="">
+                <img src="./images/mail.png" alt="mail">
+                資料請求
+            </a>
         </div>
     </header>
+    <section class="mv">
+        <div class="mv__inner">
+            <div class="mv__contents">
+                <div class="mv__content">
+                    <p class="mv__catchcopy">＼最短一週間で人手不足が解消できる!!／</p>
+                    <div class="mv__copy-title">CareSendの介護派遣で<br>介護士が、すぐ見つかる</div>
+                    <p class="mv__copy-text">
+                        「caresend」は、高品質な介護派遣サービスを提供する
+                        新しいプラットフォームです。
+                    </p>
+                    <div class="mv__boxs">
+                        <div class="mv__box">
+                            登録者<strong>58,000</strong>人<span>*1</span>
+                        </div>
+                        <div class="mv__box">
+                            即日派遣の<strong>実績多数</strong><span>*2</span>
+                        </div>
+                        <div class="mv__box">
+                            正社員雇用<strong>693人</strong><span>*3</span>
+                        </div>
+                    </div>
+                    <p class="mv__note">
+                        ※1 CareSend開始2023年4月時と2024年4月時の比較<br>
+                        ※2 CareSend2023年度一年間の実績
+                    </p>
+                </div>
+                <form class="c-form">
+                    <div class="c-form__title">派遣事例が分かる資料をダウンロード!!</div>
+                    <label for="" class="c-form__label">性<span class="c-form__required">*</span></label>
+                </form>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
