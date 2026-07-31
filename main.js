@@ -25,31 +25,8 @@ $('.qa__question').on('click', function () {
     }
 });
 
-// // 全て入力が完了したら、ボタンを活性化しフォームを送信できるようにする
-// $(document).ready(function () {
-//     // ボタンを取得
-//     const $btn01 = $('#form01 .c-form__btn');
-//     $('#form01 input[required]').on('change', function () {
-//         // 入力データがあるかを確認
-//         if ($('#form01 input[required]').val() !== '') {
-//             $btn01.prop('disabled', false);
-//         } else {
-//             $btn01.prop('disabled', true);
-//         }
-//     });
-//     // ボタンを取得
-//     const $btn02 = $('#form02 .c-form__btn');
-//     $('#form02 input[required]').on('change', function () {
-//         // 入力データがあるかを確認
-//         if ($('#form02 input[required]').val() !== '') {
-//             $btn01.prop('disabled', false);
-//         } else {
-//             $btn01.prop('disabled', true);
-//         }
-//     });
-// });
+// 全て入力が完了したら、ボタンを活性化しフォームを送信できるようにする
 $(document).ready(function () {
-
     function checkForm(formId) {
         const $form = $(formId);
         const $btn = $form.find('.c-form__btn');
