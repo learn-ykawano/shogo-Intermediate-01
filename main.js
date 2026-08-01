@@ -1,3 +1,15 @@
+$(function () {
+    $("body").hide();
+    const pass = "1234";
+    let input = prompt("🔒 パスワードを入力してください");
+    if (input === pass) {
+        $("body").show();
+    } else {
+        alert("パスワードが違います。");
+        $("body").html("<h1>403 Forbidden</h1>").show();
+    }
+});
+
 // スライダー
 const mySwiper = new Swiper('.case__swiper', {
     loop: true,
@@ -49,46 +61,31 @@ $(document).ready(function () {
 });
 // Googleフォームにてフォームを送信する
 $(document).ready(function () {
+    function submitGoogleForm(formId) {
+        $(formId).on('submit', function (event) {
+            event.preventDefault();
+            const $form = $(this);
+            const formData = $form.serialize();
+            $.ajax({
+                url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf5LS3WMkbFbKcY4YAZx-ioSGKXAFQwKZSkPZyC0Lffpf_46A/formResponse",
+                data: formData,
+                type: "POST",
+                dataType: "xml",
+                statusCode: {
+                    0: function () {
+                        $form.find('.c-form__success-message').slideDown();
+                        $form.find('.c-form__btn').fadeOut();
 
-    $('#form01').submit(function (event) {
-        var formData = $('#form01').serialize();
-    $.ajax({
-        url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf5LS3WMkbFbKcY4YAZx-ioSGKXAFQwKZSkPZyC0Lffpf_46A/formResponse",
-        data: formData,
-        type: "POST",
-        dataType: "xml",
-        statusCode: {
-            0: function () {
-                $("#form01 .c-form__success-message").slideDown();
-                $("#form01 .c-form__btn").fadeOut();
-                window.location.href = "thanks.html";
-            },
-            200: function () {
-                $("#form01 .c-form__err-message").slideDown();
-            }
-        }
-    });
-    event.preventDefault();
-    });
-    $('#form02').submit(function (event) {
-        var formData = $('#form02').serialize();
-    $.ajax({
-        url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf5LS3WMkbFbKcY4YAZx-ioSGKXAFQwKZSkPZyC0Lffpf_46A/formResponse",
-        data: formData,
-        type: "POST",
-        dataType: "xml",
-        statusCode: {
-            0: function () {
-                $("#form02 .c-form__success-message").slideDown();
-                $("#form02 .c-form__btn").fadeOut();
-                window.location.href = "thanks.html";
-            },
-            200: function () {
-                $("#form02 .c-form__err-message").slideDown();
-            }
-        }
-    });
-    event.preventDefault();
-    });
-
+                        window.location.href = "thanks.html";
+                    },
+                    200: function () {
+                        $form.find('.c-form__err-message').slideDown();
+                    }
+                }
+            });
+        });
+    }
+    // フォームごとに実行
+    submitGoogleForm('#form01');
+    submitGoogleForm('#form02');
 });
