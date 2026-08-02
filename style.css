@@ -15,6 +15,11 @@ body{
     color: var(--color-black);
     padding-top:96px;
 }
+@media screen and (max-width:767px) {
+    body{
+        padding-top:64px;
+    }
+}
 /* 共通パーツ */
 .c-heading__title{
     color: var(--color-black);
@@ -22,6 +27,11 @@ body{
     font-weight: 700;
     line-height: 1;
     text-align: center;
+}
+@media screen and (max-width:767px) {
+    .c-heading__title{
+        font-size: 24px;
+    }
 }
 .c-inner{
     max-width: 1024px;
@@ -46,6 +56,13 @@ body{
     border-color .3s ease,
     transform .3s ease;
 }
+@media screen and (max-width:767px) {
+    .c-btn{
+        max-width: 246px;
+        padding: 15px 25px;
+        font-size: 16px;
+    }
+}
 .c-btn[disabled]{
     opacity: 0.5;
 }
@@ -69,54 +86,180 @@ body{
     color: var(--color-white);
     border:1px solid var(--color-blue);
 }
-/* ーーーーーーーーーーーーーーーーーーーーー */
-header{
-    background-color: var(--color-white);
-    width:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:1000;
+/* ========================================
+header
+======================================== */
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--color-white);
+    z-index: 1000;
 }
 .header__container{
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     height: 96px;
 }
 .header__logo{
     width: 230px;
-    margin: 20px;
+    margin-left: 20px;
 }
 .header__logo img{
     width: 100%;
+    display: block;
+}
+/* ===============================
+PCナビ
+=============================== */
+.header__nav{
+    margin-left: auto;
 }
 .header__menu{
     display: flex;
     align-items: center;
     gap: 30px;
 }
-.header__item{
-    color: var(--color-blue);
-    font-weight: 700;
-    font-size: 16px;
-}
-.header__item:hover{
-    opacity: 0.5;
-}
 .header__item a{
+    color: var(--color-blue);
     text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: .3s;
+}
+.header__item a:hover{
+    opacity: .7;
+}
+/* ===============================
+資料請求
+=============================== */
+.header__grop-btn{
+    display: flex;
 }
 .header__btn{
     display: flex;
     align-items: center;
     gap: 10px;
-    height: 100%;
-    padding:40px;
-    background-color: var(--color-blue);
-    text-decoration: none;
+    height: 96px;
+    padding: 0 40px;
+    background: var(--color-blue);
     color: var(--color-white);
+    text-decoration: none;
+    font-size: 16px;
     font-weight: 700;
+}
+.header__btn img{
+    display: block;
+}
+/* ===============================
+ハンバーガー
+=============================== */
+.header__burger{
+    display: none;
+}
+/* ========================================
+SP
+======================================== */
+@media screen and (max-width:767px){
+    .header__container{
+        height: 64px;
+    }
+    .header__logo{
+        width: 130px;
+        margin-left: 15px;
+    }
+    /* ---------- PCナビを消す ---------- */
+    .header__nav{
+        display: none;
+    }
+    /* ---------- ボタン ---------- */
+    .header__btn{
+        width: 68px;
+        height: 64px;
+        padding: 6px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        font-size: 10px;
+    }
+    .header__btn img{
+        width: 24px;
+    }
+    /* ---------- ハンバーガー ---------- */
+    .header__burger{
+        width: 68px;
+        height: 64px;
+        background: var(--color-black);
+        color: #fff;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    .header__burger span{
+        display: block;
+        width: 28px;
+        height: 2px;
+        background: #fff;
+        transition: .3s;
+    }
+    .header__burger p,
+    .header__burger{
+        font-size: 10px;
+    }
+    .header__burger.is-open span:nth-child(1){
+        transform: translateY(9px) rotate(45deg);
+    }
+    .header__burger.is-open span:nth-child(2){
+        opacity: 0;
+    }
+    .header__burger.is-open span:nth-child(3){
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    /* ===============================
+    ドロワー
+    =============================== */
+    .header__drawer{
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 64px);
+        background: var(--color-blue);
+        overflow-y: auto;
+    }
+    .header__drawer-menu{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .header__drawer-item{
+        border-bottom: 1px solid rgba(255,255,255,.5);
+    }
+    .header__drawer-item a{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 24px 16px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700;
+        transition: .3s;
+    }
+    .header__drawer-item a:hover{
+        background: rgba(255,255,255,.08);
+    }
+    .header__drawer-item img{
+        width: 26px;
+    }
 }
 /* ーーーーーーーーーーーーーーーーーーーーー */
 .mv{
@@ -125,13 +268,18 @@ header{
 .mv__inner{
     max-width: 1400px;
     margin:0 auto;
-    padding: 80px 0;
+    padding: 40px 15px;
 }
 .mv__container{
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap:30px;
+}
+@media screen and (max-width:767px) {
+    .mv__container{
+        flex-direction: column;
+    }
 }
 .mv__content{
     display: flex;
@@ -140,15 +288,34 @@ header{
     flex: 1;
     position:relative;
 }
+@media screen and (max-width:767px) {
+    .mv__content{
+        align-items:center;
+        gap: 24px;
+    }
+}
 .mv__lead,.mv__text{
     color: var(--color-white);
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 400;
+}
+@media screen and (max-width:767px) {
+    .mv__lead,.mv__text{
+        font-size: 14px;
+    }
+    .mv__text{
+        text-align: center;
+    }
 }
 .mv__title{
     color: var(--color-white);
     font-size: 56px;
     font-weight: 700;
+}
+@media screen and (max-width:767px) {
+    .mv__title{
+        font-size: 24px;
+    }
 }
 .mv__boxs{
     display: flex;
@@ -166,17 +333,34 @@ header{
     justify-content: center;
     gap:20px;
 }
+@media screen and (max-width:767px) {
+    .mv__box{
+        width: 112px;
+        height: 112px;
+        gap:10px;
+    }
+}
 .mv__box-label{
     color: var(--color-blue);
     font-size: 24px;
     font-weight: 700;
     line-height: 1;
 }
+@media screen and (max-width:767px) {
+    .mv__box-label{
+        font-size: 16px;
+    }
+}
 .mv__box-value{
     color: var(--color-blue);
     font-size: 32px;
     font-weight: 700;
     line-height: 1;
+}
+@media screen and (max-width:767px) {
+    .mv__box-value{
+        font-size: 18px;
+    }
 }
 .mv__box-value span{
     color: var(--color-black);
@@ -191,13 +375,31 @@ header{
     line-height: 1.5;
     font-weight: 400;
 }
-
+.mv__img{
+    display: block;
+    max-width: 360px;
+    width: 100%;
+    position: absolute;
+    bottom: -90px;
+    right: 0;
+}
+@media screen and (max-width:767px) {
+    .mv__img{
+        position: static;
+        max-width: 100%;
+    }
+}
 .c-form{
     max-width: 450px;
     width: 100%;
     background-color: var(--color-white);
     border-radius: 5px;
     padding: 15px 15px 30px 15px;
+}
+@media screen and (max-width:767px) {
+    .c-form{
+        padding: 8px;
+    }
 }
 .c-form__heading{
     background-color: var(--color-blue);
@@ -210,6 +412,11 @@ header{
     text-align: center;
     margin-bottom: 15px;
     border-radius: 5px;
+}
+@media screen and (max-width:767px) {
+    .c-form__heading{
+        font-size: 16px;
+    }
 }
 .c-form__heading::after{
     content: '';
@@ -280,19 +487,16 @@ header{
     color: var(--color-black);
     display: none;
 }
-.mv__img{
-    display: block;
-    max-width: 360px;
-    width: 100%;
-    position: absolute;
-    bottom: -90px;
-    right: 0;
-}
 
 /* ーーーーーーーーーーーーーーーーーーーーー */
 .achievements {
     background-color: var(--color-white);
     padding-top: 96px;
+}
+@media screen and (max-width:767px) {
+    .achievements {
+        padding-top: 40px;
+    }
 }
 .achievements__stats {
     display: flex;
@@ -300,8 +504,20 @@ header{
     gap: 30px;
     margin-top: 40px;
 }
+@media screen and (max-width:767px) {
+    .achievements__stats{
+        flex-direction: column;
+    }
+}
 .achievements__stat {
     width: 400px;
+}
+@media screen and (max-width:767px) {
+    .achievements__stat{
+        max-width: 280px;
+        width: 100%;
+        margin:0 auto;
+    }
 }
 
 /* ロゴスライダー */
@@ -320,6 +536,11 @@ header{
     width: 250px;
     flex-shrink: 0;
 }
+@media screen and (max-width:767px) {
+    .achievements-slider__img {
+        width: 160px;
+    }
+}
 @keyframes slide {
     from {
         transform: translateX(0);
@@ -333,6 +554,11 @@ header{
 .about {
     padding-top: 96px;
 }
+@media screen and (max-width:767px) {
+    .about{
+        padding-top: 40px;
+    }
+}
 .about__lead {
     color: var(--color-black);
     font-size: 24px;
@@ -341,9 +567,19 @@ header{
     text-align: center;
     margin-top:50px;
 }
+@media screen and (max-width:767px) {
+   .about__lead {
+    font-size: 20px;
+   }
+}
 .about__lead strong{
     color: var(--color-blue);
     font-size: 32px;
+}
+@media screen and (max-width:767px) {
+    .about__lead strong{
+        font-size: 24px;
+    }
 }
 .about__image {
     max-width: 800px;
@@ -371,6 +607,12 @@ header{
     gap: 20px;
     margin: 70px 20px 30px 20px;
 }
+@media screen and (max-width:767px) {
+    .features__container{
+        grid-template-columns: repeat(1, 1fr);
+        margin: 50px 20px 30px 20px;
+    }
+}
 .features__content{
     width: 100%;
     height: 330px;
@@ -391,6 +633,11 @@ header{
     font-weight: 700;
     line-height: 1.5;
 }
+@media screen and (max-width:767px) {
+    .features__content-title{
+        text-align: center;
+    }
+}
 .features__content-text{
     color: var(--color-black);
     font-size: 16px;
@@ -402,11 +649,19 @@ header{
     background-image: url("./images/background-cta.png");
     background-size: cover;
 }
+@media screen and (max-width:767px) {
+
+}
 .cta__container{
     padding: 60px 20px;
     display: flex;
     flex-flow: column;
     gap: 25px;
+}
+@media screen and (max-width:767px) {
+    .cta__container{
+        padding: 40px 20px;
+    }
 }
 .cta__title{
     color: var(--color-white);
@@ -414,6 +669,11 @@ header{
     font-weight: 700;
     line-height: 1.8;
     text-align: center;
+}
+@media screen and (max-width:767px) {
+    .cta__title{
+        font-size: 24px;
+    }
 }
 /* ーーーーーーーーーーーーーーーーーーーーー */
 .case {

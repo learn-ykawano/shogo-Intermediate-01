@@ -1,14 +1,14 @@
-$(function () {
-    $("body").hide();
-    const pass = "1234";
-    let input = prompt("🔒 パスワードを入力してください");
-    if (input === pass) {
-        $("body").show();
-    } else {
-        alert("パスワードが違います。");
-        $("body").html("<h1>403 Forbidden</h1>").show();
-    }
-});
+// $(function () {
+//     $("body").hide();
+//     const pass = "1234";
+//     let input = prompt("🔒 パスワードを入力してください");
+//     if (input === pass) {
+//         $("body").show();
+//     } else {
+//         alert("パスワードが違います。");
+//         $("body").html("<h1>403 Forbidden</h1>").show();
+//     }
+// });
 
 // スライダー
 const mySwiper = new Swiper('.case__swiper', {
@@ -88,4 +88,15 @@ $(document).ready(function () {
     // フォームごとに実行
     submitGoogleForm('#form01');
     submitGoogleForm('#form02');
+});
+
+$(function () {
+    $(".header__burger").on("click", function () {
+        $(this).toggleClass("is-open");
+        $(".header__drawer").stop().slideToggle(300);
+    });
+    $(".header__drawer a").on("click", function () {
+        $(".header__drawer").slideUp(300);
+        $(".header__burger").removeClass("is-open");
+    });
 });
