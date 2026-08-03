@@ -90,6 +90,7 @@ $(document).ready(function () {
     submitGoogleForm('#form02');
 });
 
+// ハンバーガーメニュー
 $(function () {
     $(".header__burger").on("click", function () {
         $(this).toggleClass("is-open");
@@ -99,4 +100,13 @@ $(function () {
         $(".header__drawer").slideUp(300);
         $(".header__burger").removeClass("is-open");
     });
+});
+
+// スクロールアニメーション
+AOS.init({
+    duration:1000,
+    easing:"ease-out-cubic",
+    once:true,
+    offset:0,
+    delay:0
 });
