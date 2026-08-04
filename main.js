@@ -6,7 +6,6 @@ AOS.init({
     offset:0,
     delay:0
 });
-
 // スライダー
 const mySwiper = new Swiper('.case__swiper', {
     loop: true,
@@ -19,7 +18,6 @@ const mySwiper = new Swiper('.case__swiper', {
         prevEl: '.swiper-button-prev',
     },
 });
-
 // アコーディオン
 $('.qa__content.active .qa__answer').show();
 $('.qa__question').on('click', function () {
@@ -91,7 +89,6 @@ $(document).ready(function () {
     submitGoogleForm('#form01');
     submitGoogleForm('#form02');
 });
-
 // ハンバーガーメニュー
 $(function () {
     const $burger = $(".header__burger");
