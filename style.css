@@ -713,7 +713,6 @@ CTA
     height: 64px;
     object-fit: contain;
     object-position: left;
-    margin-top: 20px;
 }
 /* 矢印*/
 .case .swiper-button-prev,
@@ -802,7 +801,7 @@ CTA
     color: var(--color-black);
 }
 .price__content-num{
-    font-size: clamp(36px,3vw,96px);
+    font-size: clamp(36px,10vw,96px);
     font-weight: 700;
     line-height: 1;
     color: var(--color-blue);
