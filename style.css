@@ -6,8 +6,6 @@
   --color-blue: #007FC6;
   --color-white: #ffff;
   --color-gray:rgba(249, 249, 249, 1);
-  --bp-tab:768px;
-  --bp-sp:767px;
 }
 html{
 	scroll-behavior: smooth;
@@ -52,6 +50,9 @@ body{
     color .3s ease,
     border-color .3s ease,
     transform .3s ease;
+}
+.c-btn:focus-visible{
+    outline:3px solid var(--color-black);
 }
 .c-btn[disabled]{
     opacity: 0.5;
@@ -452,10 +453,16 @@ SP
     .mv__lead, .mv__text,.mv__title{
         text-align: center;
     }
+    .mv__boxs{
+        justify-content: center;
+        gap:5px;
+    }
     .mv__box{
-        width: 112px;
-        height: 112px;
         gap: 10px;
+        flex: 1;
+        aspect-ratio: 1 / 1;
+        width: auto;
+        height: auto;
     }
     .mv__box-label{
         font-size: 16px;
@@ -739,7 +746,7 @@ CTA
         padding: 72px 5px 50px 5px;
     }
     .case__swiper{
-        margin: 0 20px;
+        margin: 0 50px;
     }
     .case .swiper-slide{
         width: 100% !important;
@@ -858,10 +865,10 @@ CTA
     height: 44px;
     color: var(--color-white);
     margin-right: 15px;
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
     transition:.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .active .qa__icon{
     background-color: var(--color-white);
@@ -980,7 +987,6 @@ CTA
 }
 .contact__img{
     width: 100%;
-    max-width: 240px;
 }
 @media screen and (max-width:767px) {
     .contact__inner{
@@ -994,10 +1000,13 @@ CTA
         text-align: center;
     }
     .contact__img{
+        max-width: 240px;
         margin: 0 auto;
     }
 }
-/* ------------ */
+/* ---------------------------------
+footer
+--------------------------------- */
 .footer{
     background-color: var(--color-white);
     padding: 25px 20px;

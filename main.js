@@ -1,14 +1,11 @@
-// $(function () {
-//     $("body").hide();
-//     const pass = "1234";
-//     let input = prompt("🔒 パスワードを入力してください");
-//     if (input === pass) {
-//         $("body").show();
-//     } else {
-//         alert("パスワードが違います。");
-//         $("body").html("<h1>403 Forbidden</h1>").show();
-//     }
-// });
+// スクロールアニメーション
+AOS.init({
+    duration:1000,
+    easing:"ease-out-cubic",
+    once:true,
+    offset:0,
+    delay:0
+});
 
 // スライダー
 const mySwiper = new Swiper('.case__swiper', {
@@ -26,17 +23,20 @@ const mySwiper = new Swiper('.case__swiper', {
 // アコーディオン
 $('.qa__content.active .qa__answer').show();
 $('.qa__question').on('click', function () {
-    const $content = $(this).parent('.qa__content');
-    // 開閉状態の確認
-    if ($content.hasClass('active')) {
+    const $button = $(this);
+    const $content = $button.closest('.qa__content');
+    const $answer = $content.find('.qa__answer');
+    const expanded = $button.attr('aria-expanded') === 'true';
+    if (expanded) {
+        $button.attr('aria-expanded', 'false');
         $content.removeClass('active');
-        $content.find('.qa__answer').stop(true,true).slideUp(300);
+        $answer.stop(true, true).slideUp(300);
     } else {
+        $button.attr('aria-expanded', 'true');
         $content.addClass('active');
-        $content.find('.qa__answer').stop(true,true).slideDown(300);
+        $answer.stop(true, true).slideDown(300);
     }
 });
-
 // 全て入力が完了したら、ボタンを活性化しフォームを送信できるようにする
 $(document).ready(function () {
     function checkForm(formId) {
@@ -48,7 +48,9 @@ $(document).ready(function () {
                 isFilled = false;
             }
         });
-        $btn.prop('disabled', !isFilled);
+        $btn
+            .prop('disabled', !isFilled)
+            .attr('aria-disabled', !isFilled);
     }
     // form01
     $('#form01 input[required]').on('input', function () {
@@ -92,21 +94,28 @@ $(document).ready(function () {
 
 // ハンバーガーメニュー
 $(function () {
-    $(".header__burger").on("click", function () {
-        $(this).toggleClass("is-open");
-        $(".header__drawer").stop().slideToggle(300);
+    const $burger = $(".header__burger");
+    const $drawer = $(".header__drawer");
+    $burger.on("click", function () {
+        const expanded = $(this).attr("aria-expanded") === "true";
+        const isOpen = !expanded;
+        $(this)
+            .toggleClass("is-open",isOpen)
+            .attr("aria-expanded", isOpen)
+            .attr("aria-label",isOpen ? "メニューを閉じる" : "メニューを開く");
+        $drawer
+            .stop()
+            .slideToggle(300)
+            .attr("aria-hidden", !isOpen);
     });
+    // メニューをクリックした時にドロワーを閉じる
     $(".header__drawer a").on("click", function () {
-        $(".header__drawer").slideUp(300);
-        $(".header__burger").removeClass("is-open");
+        $drawer
+            .slideUp(300)
+            .attr("aria-hidden", "true");
+        $burger
+            .removeClass("is-open")
+            .attr("aria-expanded", "false")
+            .attr("aria-label", "メニューを開く");
     });
-});
-
-// スクロールアニメーション
-AOS.init({
-    duration:1000,
-    easing:"ease-out-cubic",
-    once:true,
-    offset:0,
-    delay:0
 });
